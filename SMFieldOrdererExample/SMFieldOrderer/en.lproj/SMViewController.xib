@@ -373,7 +373,7 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUICustomObject" id="369703675">
+			<object class="IBUICustomObject" id="818630682">
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -399,9 +399,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">orderer</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="369703675"/>
+						<reference key="destination" ref="818630682"/>
 					</object>
 					<int key="connectionID">83</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">field0</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="958281529"/>
+					</object>
+					<int key="connectionID">85</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -479,7 +487,7 @@
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">pushNextOrderedResponder</string>
 						<reference key="source" ref="248947695"/>
-						<reference key="destination" ref="369703675"/>
+						<reference key="destination" ref="818630682"/>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">84</int>
@@ -581,7 +589,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">82</int>
-						<reference key="object" ref="369703675"/>
+						<reference key="object" ref="818630682"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Field Orderer</string>
 					</object>
@@ -610,7 +618,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">84</int>
+			<int key="maxID">85</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -637,10 +645,15 @@
 					<string key="className">SMViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="field0">UITextField</string>
 						<string key="field4">UITextField</string>
 						<string key="orderer">SMFieldOrderer</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="field0">
+							<string key="name">field0</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="field4">
 							<string key="name">field4</string>
 							<string key="candidateClassName">UITextField</string>

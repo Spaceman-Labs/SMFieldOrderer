@@ -113,13 +113,25 @@ static NSString *__SMFieldOrdererIsOrderableByFieldOrderer = @"com.spacemanlabs.
 		}
 	}
 	
-	if (orderArray.count > firstResponderOrderIndex + 1) {
-		return orderArray[firstResponderOrderIndex + 1];
-	} else {
-		return orderArray[0];
+	__block UIView *nextResponder = nil;
+	NSUInteger firstIndex = firstResponderOrderIndex + 1;
+	NSUInteger length = orderArray.count - firstIndex;
+	if (firstIndex >= orderArray.count) {
+		firstIndex = 0;
+		length = orderArray.count;
 	}
 	
-	return nil;
+	NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(firstIndex, length)];
+	[orderArray enumerateObjectsAtIndexes:indexes
+								  options:0
+							   usingBlock:^(UITextField *view, NSUInteger index, BOOL *stop) {
+								   if (view.enabled) {
+									   nextResponder = view;
+									   *stop = YES;
+								   }
+							   }];
+	
+	return nextResponder;
 }
 
 - (void)pushNextOrderedResponder

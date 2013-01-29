@@ -15,8 +15,11 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	self.field4.skipOrderingByFieldOrderer = YES;
+	[super viewDidLoad];
+	self.field4.enabled = NO;
+	self.field0.enabled = NO;
+	
+	// Must be called once on a vier hierarchy to let the controller determine the desired order.
 	[self.orderer setupOrderingForView:self.view];
 }
 

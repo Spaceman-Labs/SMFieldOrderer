@@ -12,6 +12,8 @@
 @interface SMViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet SMFieldOrderer *orderer;
+
+@property (nonatomic, strong) IBOutlet UITextField *field0;
 @property (nonatomic, strong) IBOutlet UITextField *field4;
 
 @end
