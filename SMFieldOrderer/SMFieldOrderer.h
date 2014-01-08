@@ -11,10 +11,12 @@
 @interface SMFieldOrderer : NSObject
 
 @property (nonatomic, copy, readonly) NSMutableArray *orderArray;
+/// if NO, pushNextOrderedResponderForReturnKey will set no responder and return NO when the last responder is currently responding. Defaults to YES.
+@property (nonatomic, assign) BOOL wrapsAround;
 
 - (void)setupOrderingForView:(UIView *)view;
 - (UIView *)nextOrderedFirstResponder;
-- (IBAction)pushNextOrderedResponder;
+- (BOOL)pushNextOrderedResponder;
 
 - (BOOL)shouldBeginEditingOrderedField:(UITextField *)field;
 - (void)didBeginEditingOrderedField:(UITextField *)field;
@@ -28,5 +30,4 @@
 // Default value is NO, set to YES if you want a view to be skipped by the field orderer
 @property (nonatomic, assign) BOOL skipOrderingByFieldOrderer;
 @property (nonatomic, assign, readonly) BOOL isOrderedByFieldOrderer;
-
 @end

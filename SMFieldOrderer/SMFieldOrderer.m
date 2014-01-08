@@ -27,6 +27,15 @@ static NSString *__SMFieldOrdererIsOrderableByFieldOrderer = @"com.spacemanlabs.
 
 @implementation SMFieldOrderer
 
+- (instancetype)init
+{
+	if ((self = [super init]))
+	{
+		self.wrapsAround = YES;
+	}
+	return self;
+}
+
 - (void)_walkSubviewsOfView:(UIView *)view action:(void (^)(UIView *view, BOOL *stop))action
 {
 	[[view subviews] enumerateObjectsUsingBlock:^(UIView *view, NSUInteger index, BOOL *stop) {
@@ -117,6 +126,9 @@ static NSString *__SMFieldOrdererIsOrderableByFieldOrderer = @"com.spacemanlabs.
 	NSUInteger firstIndex = firstResponderOrderIndex + 1;
 	NSUInteger length = orderArray.count - firstIndex;
 	if (firstIndex >= orderArray.count) {
+		if (!self.wrapsAround) {
+			return nil;
+		}
 		firstIndex = 0;
 		length = orderArray.count;
 	}
@@ -134,9 +146,11 @@ static NSString *__SMFieldOrdererIsOrderableByFieldOrderer = @"com.spacemanlabs.
 	return nextResponder;
 }
 
-- (void)pushNextOrderedResponder
+- (BOOL)pushNextOrderedResponder
 {
-	[[self nextOrderedFirstResponder] becomeFirstResponder];
+	UIView *nextResponder = [self nextOrderedFirstResponder];
+	[nextResponder becomeFirstResponder];
+	return nextResponder != nil;
 }
 
 - (BOOL)shouldBeginEditingOrderedField:(UITextField *)field
@@ -192,9 +206,7 @@ static NSString *__SMFieldOrdererIsOrderableByFieldOrderer = @"com.spacemanlabs.
 		return NO;
 	}
 	
-	[self pushNextOrderedResponder];
-	
-	return YES;
+	return [self pushNextOrderedResponder];
 }
 
 @end
